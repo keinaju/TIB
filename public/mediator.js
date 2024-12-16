@@ -1,15 +1,12 @@
-import { Header } from "./header.js";
 import { HttpClient } from "./httpClient.js";
 import { Terminal } from "./terminal.js";
 
 export class Mediator {
-  #header;
   #httpClient;
   #terminal1;
   #terminal2;
 
   constructor() {
-    this.#header = new Header();
     this.#httpClient = new HttpClient();
     this.#terminal1 = new Terminal(this);
     this.#terminal2 = new Terminal(this);
@@ -70,7 +67,6 @@ export class Mediator {
 
   createElement() {
     const div = document.createElement("div");
-    div.append(this.#header.createElement());
     div.append(this.#terminal1.createElement());
     div.append(this.#terminal2.createElement());
     div.classList.add("container");
