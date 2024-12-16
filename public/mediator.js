@@ -65,7 +65,7 @@ export class Mediator {
   #showLoader(terminal) {
     const loader = document.createElement("div");
     loader.classList.add("loader");
-    terminal.setOutput(loader);
+    terminal.setOutput([loader]);
   }
 
   createElement() {
