@@ -51,7 +51,7 @@ export class Mediator {
     const match = userInput.match(urlRegex);
     if (match && match[1]) {
       this.#httpClient.setUrl(match[1]);
-      terminal.setOutput(`URL is set to ${match[1]}.`);
+      terminal.setOutput([`URL is set to ${match[1]}.`]);
       return true;
     }
   }
@@ -59,7 +59,7 @@ export class Mediator {
   #sendRequest(terminal, userInput) {
     this.#httpClient
       .sendRequest(userInput)
-      .then((result) => terminal.setOutput(result));
+      .then((texts) => terminal.setOutput(texts));
   }
 
   #showLoader(terminal) {

@@ -6,10 +6,10 @@ export class HttpClient {
 
   async sendRequest(inputString) {
     if (!this.#url) {
-      return (
-        "Client is not ready to send requests because destination URL is not defined." +
-        " Use command:\nurl <destination>"
-      );
+      return [
+        "Client is not ready to send requests because destination URL is not defined.",
+        "Use command:\nurl <destination>",
+      ];
     }
 
     const headers = new Headers();
@@ -28,7 +28,9 @@ export class HttpClient {
       const response = await fetch(request);
 
       if (!response.ok) {
-        return `Status code ${response.status}: ${response.statusText}`;
+        return [
+          `Server responded with status code #${response.status} (${response.statusText}).`,
+        ];
       }
 
       const token = response.headers.get("token");
@@ -36,11 +38,10 @@ export class HttpClient {
         this.setToken(token);
       }
 
-      const result = await response.text();
-      return result;
+      const texts = await response.json();
+      return texts;
     } catch (error) {
-      console.error(error);
-      throw error;
+      return [error.message];
     }
   }
 

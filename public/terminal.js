@@ -68,15 +68,16 @@ export class Terminal {
     this.#sectionElement.classList.remove("hidden");
   }
 
-  setOutput(element) {
-    const paragraph = this.#createOutputParagraph(element);
+  setOutput(elements) {
+    this.#clear();
 
-    this.#outputElement.innerHTML = "";
-    this.#outputElement.append(paragraph);
+    for (const text of elements) {
+      this.appendOutput(text);
+    }
   }
 
   showHelpText() {
-    const array = [
+    const texts = [
       "TIB (Terminal in Browser) is a command line tool for sending text inputs in HTTP requests.",
       document.createElement("br"),
       "Start by defining a server URL with command: url <destination>",
@@ -91,9 +92,8 @@ export class Terminal {
       "Change to split terminal: split",
     ];
 
-    this.setOutput("");
-    for (const text of array) {
-      this.appendOutput(text);
-    }
+    this.#clear();
+
+    this.setOutput(texts);
   }
 }
