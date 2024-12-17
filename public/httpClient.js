@@ -14,13 +14,13 @@ export class HttpClient {
 
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
-    if (this.#token) {
-      headers.append("Authorization", this.#token);
-    }
 
     const request = new Request(this.#url, {
       method: "POST",
-      body: JSON.stringify({ userInput: inputString }),
+      body: JSON.stringify({
+        userInput: inputString,
+        token: this.#token || "",
+      }),
       headers: headers,
     });
 
@@ -28,18 +28,17 @@ export class HttpClient {
       const response = await fetch(request);
 
       if (!response.ok) {
-        return [
-          `Server responded with status code #${response.status} (${response.statusText}).`,
-        ];
+        return [`Server responded with status code ${response.status}.`];
       }
 
-      const token = response.headers.get("token");
+      const json = await response.json();
+
+      const token = json.token;
       if (token) {
         this.setToken(token);
       }
 
-      const texts = await response.json();
-      return texts;
+      return json.texts;
     } catch (error) {
       return [error.message];
     }
