@@ -79,17 +79,14 @@ export class Terminal {
   showHelpText() {
     const texts = [
       "TIB (Terminal in Browser) is a command line tool for sending text inputs in HTTP requests.",
-      document.createElement("br"),
       "Start by defining a server URL with command: url <destination>",
-      document.createElement("br"),
-      "Type text command in input field and press enter to send request.",
-      "Press CTRL + L to clear the terminal.",
-      document.createElement("br"),
+      "Type text command in input field and press enter to send request." +
+        " Press CTRL + L to clear the terminal.",
       "Commands:",
-      "Help text: empty input",
-      "Set server URL: url <destination>",
-      "Change to single terminal: hide",
-      "Change to split terminal: split",
+      "empty input = help text",
+      "url <destination> = set server URL",
+      "hide = change to single terminal",
+      "split = change to split terminal",
     ];
 
     this.#clear();
