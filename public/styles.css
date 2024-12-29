@@ -1,11 +1,42 @@
+:root {
+  --main-bg-color: blue;
+  --main-fg-color: white;
+  --main-text-color: #ffffffee;
+}
+
 *,
 html {
-  background-color: blue;
-  color: white;
-  font-family: monospace;
-  font-size: 24px;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  font-family: "custom", monospace;
+  font-size: 36px;
   margin: 0;
   padding: 0;
+}
+
+@font-face {
+  font-family: "custom";
+  src: url("font/Ubuntu_Mono/UbuntuMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "custom";
+  src: url("font/Ubuntu_Mono/UbuntuMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "custom";
+  src: url("font/Ubuntu_Mono/UbuntuMono-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "custom";
+  src: url("font/Ubuntu_Mono/UbuntuMono-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
 }
 
 .cursor {
@@ -21,7 +52,8 @@ html {
 }
 
 input {
-  background-color: #999;
+  background-color: gray;
+  color: var(--main-fg-color);
   border: 0px;
   margin-bottom: 20px;
   padding-right: 10px;
@@ -30,8 +62,8 @@ input {
 }
 
 input:focus {
-  background-color: white;
-  color: blue;
+  background-color: var(--main-fg-color);
+  color: var(--main-bg-color);
   outline: none;
 }
 
@@ -44,7 +76,7 @@ input:focus {
 }
 
 .terminal {
-  border-left: 1px solid white;
+  border-left: 1px solid var(--main-text-color);
   display: inline-table;
   margin-left: auto;
   margin-right: auto;
@@ -88,7 +120,8 @@ input:focus {
 
 .loader {
   width: fit-content;
-  background: linear-gradient(90deg, #fff 50%, #0000 0) right/200% 100%;
+  background: linear-gradient(90deg, var(--main-text-color) 50%, #0000 0)
+    right/200% 100%;
   animation: l21 3s infinite ease-in;
 }
 
@@ -97,7 +130,11 @@ input:focus {
   color: #0000;
   padding: 0 5px;
   background: inherit;
-  background-image: linear-gradient(90deg, #00f 50%, #fff 0);
+  background-image: linear-gradient(
+    90deg,
+    var(--main-bg-color) 50%,
+    var(--main-text-color) 0
+  );
   -webkit-background-clip: text;
   background-clip: text;
 }
