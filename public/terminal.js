@@ -11,6 +11,9 @@ export class Terminal {
     this.#mediator = mediator;
 
     this.#inputElement = document.createElement("input");
+
+    this.#inputElement.placeholder = "<command>";
+
     this.#inputElement.addEventListener("keydown", (event) => {
       if (event.key == "Enter") {
         this.#mediator.onEnter(this, this.#inputElement.value);
