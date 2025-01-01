@@ -1,13 +1,15 @@
 :root {
-  --main-bg-color: blue;
-  --main-fg-color: white;
-  --main-text-color: #ffffffee;
+  --body-bg-color: rgb(221, 238, 236);
+  --terminal-bg-color: rgba(0, 0, 0, 0.65);
+  --main-text-color: rgb(255, 255, 255, 0.95);
+}
+
+body {
+  background-color: var(--body-bg-color);
 }
 
 *,
 html {
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
   font-family: "custom", monospace;
   font-size: 36px;
   margin: 0;
@@ -52,18 +54,13 @@ html {
 }
 
 input {
-  background-color: gray;
-  color: var(--main-fg-color);
   border: 0px;
   margin-bottom: 20px;
-  padding-right: 10px;
   text-align: right;
   width: 100%;
 }
 
 input:focus {
-  background-color: var(--main-fg-color);
-  color: var(--main-bg-color);
   outline: none;
 }
 
@@ -76,13 +73,16 @@ input:focus {
 }
 
 .terminal {
+  background-color: var(--terminal-bg-color);
   border-left: 1px solid var(--main-text-color);
+  color: var(--main-text-color);
   display: inline-table;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
   overflow-wrap: break-word;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1ch;
+  padding-right: 1ch;
   text-align: left;
   width: 40ch;
 }
@@ -130,11 +130,7 @@ input:focus {
   color: #0000;
   padding: 0 5px;
   background: inherit;
-  background-image: linear-gradient(
-    90deg,
-    var(--main-bg-color) 50%,
-    var(--main-text-color) 0
-  );
+  background-image: linear-gradient(90deg, black 50%, var(--main-text-color) 0);
   -webkit-background-clip: text;
   background-clip: text;
 }
