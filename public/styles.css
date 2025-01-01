@@ -55,6 +55,7 @@ html {
 }
 
 input {
+  background-color: var(--body-bg-color);
   border: 0px;
   margin-bottom: 20px;
   text-align: right;
@@ -62,6 +63,7 @@ input {
 }
 
 input:focus {
+  background-color: rgb(255, 255, 255);
   outline: none;
 }
 
