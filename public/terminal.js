@@ -1,8 +1,11 @@
+import { DropBox } from "./dropBox.js";
+
 export class Terminal {
   #mediator;
   #inputElement;
   #outputElement;
   #sectionElement;
+  #dropBox;
 
   constructor(mediator) {
     this.#mediator = mediator;
@@ -53,6 +56,10 @@ export class Terminal {
 
     this.#sectionElement = section;
 
+    this.#dropBox = new DropBox(section, (commands) =>
+      this.#mediator.onFileDrop(this, commands)
+    );
+
     return section;
   }
 
@@ -78,15 +85,16 @@ export class Terminal {
 
   showHelpText() {
     const texts = [
-      "TIB (Terminal in Browser) is a command line tool for sending text inputs in HTTP requests.",
-      "Start by defining a server URL with command: url <destination>",
-      "Type text command in input field and press enter to send request." +
-        " Press CTRL + L to clear the terminal.",
-      "Commands:",
+      "TIB (Terminal in Browser) is a command line client for sending text inputs as HTTP requests.",
+      "Start by defining server's URL with command: url <destination>",
+      "Type text command in the input field and press enter to send the request.",
+      "You can also provide commands as a text file. Command values are to be seperated with ; character. Drag and drop the file at the terminal to send the request.",
+      "Press CTRL + L to clear the terminal.",
+      "Client commands:",
       "empty input = help text",
-      "url <destination> = set server URL",
-      "hide = change to single terminal",
-      "split = change to split terminal",
+      "url <destination> = set server's URL",
+      "split = show two terminals",
+      "hide = show one terminal",
     ];
 
     this.#clear();

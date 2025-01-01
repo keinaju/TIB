@@ -4,7 +4,7 @@ export class HttpClient {
 
   constructor() {}
 
-  async sendRequest(inputString) {
+  async sendRequest(commandsArray) {
     if (!this.#url) {
       return [
         "Client is not ready to send requests because destination URL is not defined.",
@@ -18,7 +18,7 @@ export class HttpClient {
     const request = new Request(this.#url, {
       method: "POST",
       body: JSON.stringify({
-        userInput: inputString,
+        commands: commandsArray,
         token: this.#token || "",
       }),
       headers: headers,

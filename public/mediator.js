@@ -81,9 +81,14 @@ export class Mediator {
     const isClientCommand = this.#checkClientCommands(terminal, userInput);
 
     if (!isClientCommand) {
-      this.#sendRequest(terminal, userInput);
+      this.#sendRequest(terminal, [userInput]);
       this.#showLoader(terminal);
     }
+  }
+
+  onFileDrop(terminal, commands) {
+    this.#sendRequest(terminal, commands);
+    this.#showLoader(terminal);
   }
 
   onTab(terminal) {
