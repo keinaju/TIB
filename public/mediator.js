@@ -2,6 +2,7 @@ import { HttpClient } from "./httpClient.js";
 import { Terminal } from "./terminal.js";
 
 export class Mediator {
+  #container;
   #httpClient;
   #terminal1;
   #terminal2;
@@ -30,6 +31,7 @@ export class Mediator {
 
   #checkHideCommand(terminal, userInput) {
     if (userInput == "hide") {
+      this.#container.classList.remove("container");
       terminal.hide();
       return true;
     }
@@ -37,6 +39,7 @@ export class Mediator {
 
   #checkSplitCommand(terminal, userInput) {
     if (userInput == "split") {
+      this.#container.classList.add("container");
       this.#terminal1.show();
       this.#terminal2.show();
       return true;
@@ -69,10 +72,10 @@ export class Mediator {
     const div = document.createElement("div");
     div.append(this.#terminal1.createElement());
     div.append(this.#terminal2.createElement());
-    div.classList.add("container");
 
     this.#terminal1.showHelpText();
     this.#terminal2.hide();
+    this.#container = div;
 
     return div;
   }

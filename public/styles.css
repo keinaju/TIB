@@ -50,7 +50,8 @@ html {
 }
 
 .container {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 input {
@@ -75,11 +76,12 @@ input:focus {
 .terminal {
   background-color: var(--terminal-bg-color);
   border-left: 1px solid var(--main-text-color);
+  border-right: 1px solid var(--main-text-color);
   color: var(--main-text-color);
-  display: inline-table;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
+  overflow: auto;
   overflow-wrap: break-word;
   padding-left: 1ch;
   padding-right: 1ch;
