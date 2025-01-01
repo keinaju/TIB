@@ -28,7 +28,7 @@ export class HttpClient {
       const response = await fetch(request);
 
       if (!response.ok) {
-        return [`Server responded with status code ${response.status}.`];
+        return [`The request resulted in status code ${response.status}.`];
       }
 
       const json = await response.json();
