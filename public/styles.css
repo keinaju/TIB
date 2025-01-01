@@ -55,15 +55,16 @@ html {
 }
 
 input {
-  background-color: var(--body-bg-color);
   border: 0px;
+  color: rgba(128, 128, 128, 0.5);
   margin-bottom: 20px;
   text-align: right;
   width: 100%;
 }
 
 input:focus {
-  background-color: rgb(255, 255, 255);
+  color: rgba(117, 121, 141);
+  font-style: italic;
   outline: none;
 }
 
