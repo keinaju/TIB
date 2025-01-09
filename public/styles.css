@@ -1,5 +1,5 @@
 :root {
-  --body-bg-color: rgb(221, 238, 236);
+  --body-bg-color: rgb(250, 250, 250);
   --terminal-bg-color: rgba(0, 0, 0, 0.65);
   --main-text-color: rgb(255, 255, 255, 0.95);
 }
@@ -22,18 +22,21 @@ html {
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "custom";
   src: url("font/IBM_Plex_Mono/IBMPlexMono-Medium.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
+
 @font-face {
   font-family: "custom";
   src: url("font/IBM_Plex_Mono/IBMPlexMono-LightItalic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
+
 @font-face {
   font-family: "custom";
   src: url("font/IBM_Plex_Mono/IBMPlexMono-MediumItalic.ttf") format("truetype");
@@ -56,15 +59,17 @@ html {
 
 input {
   border: 0px;
-  color: rgba(128, 128, 128, 0.5);
+  background-color: rgba(128, 128, 128);
+  color: rgba(255, 255, 255);
+  font-style: italic;
   margin-bottom: 20px;
   text-align: right;
   width: 100%;
 }
 
 input:focus {
-  color: rgba(117, 121, 141);
-  font-style: italic;
+  background-color: rgba(255, 255, 255);
+  color: rgba(0, 0, 0);
   outline: none;
 }
 
@@ -89,7 +94,7 @@ input:focus {
   padding-left: 1ch;
   padding-right: 1ch;
   text-align: left;
-  width: 40ch;
+  width: 36ch;
 }
 
 .hidden {
