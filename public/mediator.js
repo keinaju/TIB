@@ -38,8 +38,8 @@ export class Mediator {
     return (
       this.#checkHelpCommand(terminal, userInput) ||
       this.#checkHideCommand(terminal, userInput) ||
-      this.#checkSplitCommand(terminal, userInput) ||
-      this.#checkThemeCommand(terminal, userInput) ||
+      this.#checkSplitCommand(userInput) ||
+      this.#checkThemeCommand(userInput) ||
       this.#checkUrlCommand(terminal, userInput)
     );
   }
@@ -69,7 +69,7 @@ export class Mediator {
     }
   }
 
-  #checkSplitCommand(terminal, userInput) {
+  #checkSplitCommand(userInput) {
     if (userInput == "split") {
       this.#container.classList.add("container");
       this.#terminal1.show();
@@ -78,7 +78,7 @@ export class Mediator {
     }
   }
 
-  #checkThemeCommand(terminal, userInput) {
+  #checkThemeCommand(userInput) {
     if (userInput == "theme") {
       this.#changeTheme();
       return true;

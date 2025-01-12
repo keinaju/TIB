@@ -98,6 +98,7 @@ export class Terminal {
       "url <destination> = set server's URL",
       "split = show two terminals",
       "hide = show one terminal",
+      "theme = change color theme",
     ];
 
     this.#clear();
