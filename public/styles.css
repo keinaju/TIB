@@ -83,8 +83,6 @@ input:focus {
 
 .terminal {
   background-color: var(--terminal-bg-color);
-  border-left: 1px solid var(--main-text-color);
-  border-right: 1px solid var(--main-text-color);
   color: var(--main-text-color);
   height: 100vh;
   margin-left: auto;

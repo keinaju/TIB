@@ -6,6 +6,27 @@ export class Mediator {
   #httpClient;
   #terminal1;
   #terminal2;
+  #themes = [
+    "rgb(250, 250, 250)",
+    "rgb(237, 252, 255)",
+    "rgb(192, 255, 255)",
+    "rgb(192, 255, 235)",
+    "rgb(192, 255, 215)",
+    "rgb(0, 255, 240)",
+    "rgb(0, 255, 220)",
+    "rgb(0, 255, 200)",
+    "rgb(0, 0, 255)",
+    "rgb(0, 0, 128)",
+    "rgb(255, 0, 80)",
+    "rgb(128, 0, 40)",
+    "rgb(211, 158, 112)",
+    "rgb(62, 45, 30)",
+    "rgb(192, 192, 192)",
+    "rgb(128, 128, 128)",
+    "rgb(64, 64, 64)",
+    "rgb(0, 0, 0)",
+  ];
+  #themeNow = 0;
 
   constructor() {
     this.#httpClient = new HttpClient();
@@ -18,8 +39,19 @@ export class Mediator {
       this.#checkHelpCommand(terminal, userInput) ||
       this.#checkHideCommand(terminal, userInput) ||
       this.#checkSplitCommand(terminal, userInput) ||
+      this.#checkThemeCommand(terminal, userInput) ||
       this.#checkUrlCommand(terminal, userInput)
     );
+  }
+
+  #changeTheme() {
+    this.#themeNow++;
+    if (this.#themeNow == this.#themes.length) {
+      this.#themeNow = 0;
+    }
+
+    const root = document.querySelector(":root");
+    root.style.setProperty("--body-bg-color", this.#themes[this.#themeNow]);
   }
 
   #checkHelpCommand(terminal, userInput) {
@@ -42,6 +74,13 @@ export class Mediator {
       this.#container.classList.add("container");
       this.#terminal1.show();
       this.#terminal2.show();
+      return true;
+    }
+  }
+
+  #checkThemeCommand(terminal, userInput) {
+    if (userInput == "theme") {
+      this.#changeTheme();
       return true;
     }
   }
