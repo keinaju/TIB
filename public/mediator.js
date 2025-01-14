@@ -101,12 +101,6 @@ export class Mediator {
       .then((texts) => terminal.setOutput(texts));
   }
 
-  #showLoader(terminal) {
-    const loader = document.createElement("div");
-    loader.classList.add("loader");
-    terminal.setOutput([loader]);
-  }
-
   createElement() {
     const div = document.createElement("div");
     div.append(this.#terminal1.createElement());
@@ -124,13 +118,13 @@ export class Mediator {
 
     if (!isClientCommand) {
       this.#sendRequest(terminal, [userInput]);
-      this.#showLoader(terminal);
+      terminal.showLoader();
     }
   }
 
   onFileDrop(terminal, commands) {
     this.#sendRequest(terminal, commands);
-    this.#showLoader(terminal);
+    terminal.showLoader();
   }
 
   onTab(terminal) {

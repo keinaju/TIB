@@ -105,4 +105,10 @@ export class Terminal {
 
     this.setOutput(texts);
   }
+
+  showLoader() {
+    const loader = document.createElement("div");
+    loader.classList.add("loader");
+    this.setOutput([loader]);
+  }
 }
