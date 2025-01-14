@@ -38,17 +38,30 @@ export class Terminal {
     this.#outputElement.innerText = "";
   }
 
-  #createOutputParagraph(element) {
+  #createOutputParagraph() {
     const paragraph = document.createElement("p");
     paragraph.classList.add("terminal-output-element");
-    paragraph.append(element);
     return paragraph;
   }
 
-  appendOutput(element) {
-    const paragraph = this.#createOutputParagraph(element);
+  #sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async appendOutput(text) {
+    const paragraph = this.#createOutputParagraph(text);
 
     this.#outputElement.append(paragraph);
+
+    let counter = 0;
+    for (const char of text) {
+      paragraph.append(char);
+
+      if (counter % 15 == 0) {
+        await this.#sleep(10);
+      }
+      counter++;
+    }
   }
 
   createElement() {
@@ -78,11 +91,11 @@ export class Terminal {
     this.#sectionElement.classList.remove("hidden");
   }
 
-  setOutput(elements) {
+  async showTexts(texts) {
     this.#clear();
 
-    for (const text of elements) {
-      this.appendOutput(text);
+    for (const text of texts) {
+      await this.appendOutput(text);
     }
   }
 
@@ -103,12 +116,14 @@ export class Terminal {
 
     this.#clear();
 
-    this.setOutput(texts);
+    this.showTexts(texts);
   }
 
   showLoader() {
+    this.#clear();
+
     const loader = document.createElement("div");
     loader.classList.add("loader");
-    this.setOutput([loader]);
+    this.#outputElement.append(loader);
   }
 }

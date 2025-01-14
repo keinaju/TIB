@@ -74,7 +74,6 @@ input:focus {
 }
 
 .terminal-output-element {
-  animation-name: fade-in;
   animation-duration: 0.25s;
   animation-timing-function: ease-out;
   padding-top: 5px;
@@ -111,18 +110,6 @@ input:focus {
   }
   100% {
     opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
   }
 }
 
